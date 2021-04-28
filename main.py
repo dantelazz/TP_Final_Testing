@@ -1,20 +1,28 @@
 import random #Hacemos uso de la libreria random para generar los precios de las acciones al azar
 
 class Jugadores: #Definimos tanto la cantidad de jugadores, como el dinero de cada uno
-    def __init__(self, jugador1, jugador2, jugador3, jugador4, dineroJugador1, dineroJugador2, dineroJugador3, dineroJugador4):
+    def __init__(self, jugador1, jugador2, dineroJugador1, dineroJugador2:
         self.jugador1 = jugador1
         self.jugador2 = jugador2
-        self.jugador3 = jugador3
-        self.jugador4 = jugador4
         self.dineroJugador1 = dineroJugador1
         self.dineroJugador2 = dineroJugador2
-        self.dineroJugador3 = dineroJugador3
-        self.dineroJugador4 = dineroJugador4
+
+
+class CantidadDeAcciones:
+    def __init__(self, cantAccionesJugador1, cantAccionesJugador2):
+        self.cantAccionesJugador1 = cantAccionesJugador1
+        self.cantAccionesJugador2 = cantAccionesJugador2
+
+    def cantidadDeAccionesJugadores():
+        self.cantAccionesJugador1 = accionesDelJugador1
+        self.cantAccionesJugador2 = accionesDelJugador2
 
 class CompraVentaAcciones: #Definimos la compra y venta de acciones
     def __init__(self, comprarAccion, venderAccion):
         self.comprarAccion = comprarAccion
         self.venderAccion = venderAccion
+
+    
 
 class Empresas:
     def __init__(self, nombreEmpresas, precioAcciones):
@@ -25,7 +33,7 @@ class Empresas:
         self.nombreEmpresas = nombre_Empresas
         nombre_Empresas = ('Apple', 'Samsung')
         self.precioAcciones = range(0, 300)
-        precioAcciones = random.sample(self.precioAcciones, k = 5) #Hacemos que solo imprima 5 valores de las acciones por el numero de acciones total  
+        precioAcciones = random.sample(self.precioAcciones, k = 2) #Hacemos que solo imprima 2 valores de las acciones por el numero de acciones total  
         
 print('******************************')
 print('* El Inversionista The Game! *')
@@ -49,9 +57,11 @@ def juego():
                 if question1 == 'apple' or 'Apple' or 'APPLE':
                     precioAcciones - self.dineroJugador1
                     contadorMovimientos = contadorMovimientos + 1
-                else:
+                    accionesDelJugador1 = accionesDelJugador1 + 1
+                else:   
                     precioAcciones - self.dineroJugador1
                     contadorMovimientos = contadorMovimientos + 1
+                    accionesDelJugador2 = accionesDelJugador2 + 1
                     if self.dinero < 1:
                         print('No tienes suficiente dinero. Vuelva por donde vino')
                         break
