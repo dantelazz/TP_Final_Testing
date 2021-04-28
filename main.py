@@ -22,8 +22,6 @@ class CompraVentaAcciones: #Definimos la compra y venta de acciones
         self.comprarAccion = comprarAccion
         self.venderAccion = venderAccion
 
-    
-
 class Empresas:
     def __init__(self, nombreEmpresas, precioAcciones):
         self.nombreEmpresas = nombreEmpresas
@@ -45,19 +43,20 @@ print('Sus valores son: ')
 def juego():
     contadorMovimientos = 0 
     print('Ingresar los nombres de los jugadores:')
-    self.jugador1 = input(str('Jugador 1:'))  
-    self.jugador2 = input(str('Jugador 2:'))
+    self.jugador1 = input(str('Jugador 1: '))  
+    self.jugador2 = input(str('Jugador 2: '))
     
     buyOrSell = input(str('Comprar o Vender?: '))
     while contadorMovimientos <= 20:
         if buyOrSell == 'c' or 'C':
-            question1 = input(str('De que compañia queres comprar acciones?: '))
-            question2 = input(int('Cuantas acciones queres comprar?: '))
+            buyingQuestion1 = input(str('De que compañia queres comprar acciones?: '))
+            buyingQuestion2 = input(int('Cuantas acciones queres comprar?: '))
             while self.dineroJugador1 > 0:
-                if question1 == 'apple' or 'Apple' or 'APPLE':
+                if buyingQuestion1 == 'apple' or 'Apple' or 'APPLE':
                     precioAcciones - self.dineroJugador1
                     contadorMovimientos = contadorMovimientos + 1
                     accionesDelJugador1 = accionesDelJugador1 + 1
+                    print('A ' + self.jugador1 + ' le quedan: $' + self.dineroJugador1)
                 else:   
                     precioAcciones - self.dineroJugador1
                     contadorMovimientos = contadorMovimientos + 1
@@ -66,7 +65,22 @@ def juego():
                         print('No tienes suficiente dinero. Vuelva por donde vino')
                         break
 
-juego()  #No anda                   
+        elif buyOrSell == 'v' or 'V':
+            sellingQuestion1 = input(str('A que compañia queres venderle acciones?: '))
+            sellingQuestion2 = input(int('Cuantas queres vender?: '))
+            print('Usted esta a punto de vender ' + sellingQuestion2 + 'acciones a: ' + sellingQuestion1)
+            confirmation = input('Por favor escriba "S" para confirmar: ')
+            while confirmation == 's' or 'S':
+                accionesDelJugador1 - sellingQuestion2
+                dineroGanadoPorVentaDeAcciones = sellingQuestion2 * precioAcciones
+                self.dineroJugador1 + dineroGanadoPorVentaDeAcciones
+                print('Felicidades, su capital ahora es de: $', self.dineroJugador1)
+
+
+
+
+runGame = juego()  #No anda
+runGame()                   
                    
             
 
