@@ -15,8 +15,24 @@ class CompraVentaAcciones:
         self.comprarAccion = comprarAccion
         self.venderAccion = venderAccion
 
+class Empresas:
+    def __init__(self, nombreEmpresas, precioAcciones):
+        self.nombreEmpresas = nombreEmpresas
+        self.precioAcciones = precioAcciones
 
-    def juego(Jugadores, CompraVentaAcciones):
+    def Accionesy_y_Empresas():
+        self.precioAcciones = range(0, 300)
+        random.sample(actionsValue, k = 5)       
+    
+    
+    def juego(Jugadores, CompraVentaAcciones, Accionesy_y_Empresas):
         contadorMovimientos = 0
         choice = input(str('Desea comprar o vender? C para comprar y V para vender: \n'))
-        while 
+        while contadorMovimientos <= 20:
+            if choice == 'C' or 'c':
+                sellOrBuy = input(str('De que compañia desea comprar las acciones?: '))
+                sellOrBuy2 = input(int('Cuantas acciones desea comprar?: '))
+
+
+
+Empresas("Apple", "300")
