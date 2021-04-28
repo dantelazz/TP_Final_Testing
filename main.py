@@ -1,6 +1,6 @@
-import random
+import random #Hacemos uso de la libreria random para generar los precios de las acciones al azar
 
-class Jugadores:
+class Jugadores: #Definimos tanto la cantidad de jugadores, como el dinero de cada uno
     def __init__(self, jugador1, jugador2, jugador3, jugador4, dineroJugador1, dineroJugador2, dineroJugador3, dineroJugador4):
         self.jugador1 = jugador1
         self.jugador2 = jugador2
@@ -11,8 +11,7 @@ class Jugadores:
         self.dineroJugador3 = dineroJugador3
         self.dineroJugador4 = dineroJugador4
 
-
-class CompraVentaAcciones:
+class CompraVentaAcciones: #Definimos la compra y venta de acciones
     def __init__(self, comprarAccion, venderAccion):
         self.comprarAccion = comprarAccion
         self.venderAccion = venderAccion
@@ -22,23 +21,70 @@ class Empresas:
         self.nombreEmpresas = nombreEmpresas
         self.precioAcciones = precioAcciones
 
-    def Acciones_y_Empresas():
-        self.nombreEmpresas = ('Apple', 'Samsung')
+    def Acciones_y_Empresas(): #En el __init__ como aca, asignamos el valor de cada acción
+        self.nombreEmpresas = nombre_Empresas
+        nombre_Empresas = ('Apple', 'Samsung')
         self.precioAcciones = range(0, 300)
-        precioAcciones = random.sample(self.precioAcciones, k = 5)       
-    
-    def juego(Jugadores, CompraVentaAcciones, Acciones_y_Empresas):
-        contadorMovimientos = 0
-        choice = input(str('Desea comprar o vender? C para comprar | V para vender: \n'))
-        print(self.nombreEmpresas)
-        print(precioAcciones)
-        while contadorMovimientos <= 20:
-            if choice == 'C' or 'c':
-                sellOrBuy = input(str('De que compañia desea comprar las acciones?: '))
-                sellOrBuy2 = input(int('Cuantas acciones desea comprar?: '))
-                for num in sellOrBuy2:
-                    self.dineroJugador1 - self.precioAcciones
-                    print('Al jugador ' + self.jugador1 + 'le quedan: $' + self.dineroJugador1)
-                    contadorMovimientos = contadorMovimientos + 1
+        precioAcciones = random.sample(self.precioAcciones, k = 5) #Hacemos que solo imprima 5 valores de las acciones por el numero de acciones total  
+        
+print('******************************')
+print('* El Inversionista The Game! *')
+print('******************************\n')
 
-               
+print('Las empresas que se dedican a la compra-venta de acciones son: ')
+print('Sus valores son: ')
+
+def juego():
+    contadorMovimientos = 0 
+    print('Ingresar los nombres de los jugadores:')
+    self.jugador1 = input(str('Jugador 1:'))  
+    self.jugador2 = input(str('Jugador 2:'))
+    
+    buyOrSell = input(str('Comprar o Vender?: '))
+    while contadorMovimientos <= 20:
+        if buyOrSell == 'c' or 'C':
+            question1 = input(str('De que compañia queres comprar acciones?: '))
+            question2 = input(int('Cuantas acciones queres comprar?: '))
+            while self.dineroJugador1 > 0:
+                if question1 == 'apple' or 'Apple' or 'APPLE':
+                    precioAcciones - self.dineroJugador1
+                    contadorMovimientos = contadorMovimientos + 1
+                else:
+                    precioAcciones - self.dineroJugador1
+                    contadorMovimientos = contadorMovimientos + 1
+                    if self.dinero < 1:
+                        print('No tienes suficiente dinero. Vuelva por donde vino')
+                        break
+
+juego()  #No anda                   
+                   
+            
+
+        
+        
+        
+        
+        
+           
+'''    
+def juego(Jugadores, CompraVentaAcciones, Acciones_y_Empresas):
+    contadorMovimientos = 0
+    print('Ingrese los nombres de los jugadores: ')
+    player1 = str(input('Jugador 1: '))
+    player2 = str(input('Jugador 2: '))
+    player3 = str(input('Jugador 3: '))
+    player4 = str(input('Jugador 4: '))
+
+    choice = input(str('Desea comprar o vender? C para comprar | V para vender: \n'))
+
+    print(self.nombreEmpresas)
+    print(precioAcciones)
+    while contadorMovimientos <= 20:
+        if choice == 'C' or 'c':
+            sellOrBuy = input(str('De que compañia desea comprar las acciones?: '))
+            sellOrBuy2 = input(int('Cuantas acciones desea comprar?: '))
+            for num in sellOrBuy2:
+                self.dineroJugador1 - self.precioAcciones #Realizamos el descuento de dinero tras la compra de la acción
+                print('Al jugador ' + self.jugador1 + ' le quedan: $' + self.dineroJugador1)
+                contadorMovimientos = contadorMovimientos + 1 #Hacemos que el contador de movimientos incremente
+'''
