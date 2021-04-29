@@ -28,8 +28,8 @@ class Empresas:
         self.precioAcciones = precioAcciones
 
     def Acciones_y_Empresas(): #En el __init__ como aca, asignamos el valor de cada acción
-        self.nombreEmpresas = nombre_Empresas
-        nombre_Empresas = ('Apple', 'Samsung')
+        self.nombreEmpresas = ('Apple', 'Samsung') #Modificando linea 31 y 32 para tratar de que elija compañias random de la tupla, al igual que precioAcciones
+        nombre_Empresas = random.sample(self.nombreEmpresas, k = 2)
         self.precioAcciones = range(0, 300)
         precioAcciones = random.sample(self.precioAcciones, k = 2) #Hacemos que solo imprima 2 valores de las acciones por el numero de acciones total  
         
@@ -79,8 +79,8 @@ def juego():
 
 
 
-runGame = juego()  #No anda
-runGame()                   
+runGame = juego()  
+runGame() #No anda Dante, quiero llorar :')               
                    
             
 
