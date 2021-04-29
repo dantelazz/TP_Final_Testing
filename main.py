@@ -80,7 +80,7 @@ def juego():
 
 
 runGame = juego()  
-runGame() #No anda Dante, quiero llorar :')               
+runGame() #No funca               
                    
             
 
