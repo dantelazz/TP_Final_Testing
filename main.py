@@ -1,4 +1,24 @@
 import random #Hacemos uso de la libreria random para generar los precios de las acciones al azar
+from bs4 import BeautifulSoup
+import requests
+
+url = 'https://diarionocturno.com/blog/2020/12/03/nombres-chistosos-de-doble-sentido-para-trolear/'
+page = requests.get(url)
+soup = BeautifulSoup(page.content, 'html.parser')
+
+# Nombres
+nombres = soup.find_all('li')
+
+#Funcion para llamar el nombre de la compania
+def Nombres_Companias():
+    nombresList = list()
+    for i in nombres:
+            nombresList.append(i.text)
+    nombreAleatorio = random.choice(nombresList)
+    print((nombreAleatorio)+".Inc")
+
+
+
 
 class Jugadores: #Definimos tanto la cantidad de jugadores, como el dinero de cada uno
     def __init__(self, jugador1, jugador2, dineroJugador1, dineroJugador2:
