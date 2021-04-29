@@ -13,7 +13,7 @@ class CantidadDeAcciones:
         self.cantAccionesJugador1 = cantAccionesJugador1
         self.cantAccionesJugador2 = cantAccionesJugador2
 
-    def cantidadDeAccionesJugadores():
+    def cantidadDeAccionesJugadores(self):
         self.cantAccionesJugador1 = accionesDelJugador1
         self.cantAccionesJugador2 = accionesDelJugador2
 
@@ -27,7 +27,7 @@ class Empresas:
         self.nombreEmpresas = nombreEmpresas
         self.precioAcciones = precioAcciones
 
-    def Acciones_y_Empresas(): #En el __init__ como aca, asignamos el valor de cada acción
+    def Acciones_y_Empresas(self): #En el __init__ como aca, asignamos el valor de cada acción
         self.nombreEmpresas = ('Apple', 'Samsung') #Modificando linea 31 y 32 para tratar de que elija compañias random de la tupla, al igual que precioAcciones
         nombre_Empresas = random.sample(self.nombreEmpresas, k = 2)
         self.precioAcciones = range(0, 300)
@@ -90,7 +90,9 @@ runGame() #No funca
         
         
            
-'''    
+'''   
+IGNORAR DEBAJO DE ESTA LINEA!
+
 def juego(Jugadores, CompraVentaAcciones, Acciones_y_Empresas):
     contadorMovimientos = 0
     print('Ingrese los nombres de los jugadores: ')
