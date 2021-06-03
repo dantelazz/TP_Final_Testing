@@ -13,7 +13,7 @@ def encriptarX(frase):
                 frase_encriptada = frase_encriptada + caracter
         else:
             frase_encriptada = frase_encriptada + letra
-    return frase
+    return frase_encriptada
 
 
 def encriptarCesar(frase):
@@ -27,7 +27,7 @@ def desencriptarCesar(frase):
 
 
 while True:
-    print(encriptarCesar(input("Ingrese frase a encriptar: \n")))
+    print(encriptarX(input("Ingrese frase a encriptar: \n")))
     print("\n Ingrese\n(1) para encriptar otra frase")
     print("(2) para finalizar")
     opcion = input(">")
