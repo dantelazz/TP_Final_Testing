@@ -1,9 +1,10 @@
-caracter_elegido= "X"
 
-def encriptar(frase,caracter):
+
+def encriptar_X(frase):
+    caracter="X"
     frase_encriptada =""
     for letra in frase:
-        if letra.lower() in "aeiou":
+        if letra.lower() in "bcdfghklmnpqrstvwxyz":
             if letra.isupper():
                 frase_encriptada = frase_encriptada + caracter.upper()
             else:
@@ -13,7 +14,7 @@ def encriptar(frase,caracter):
     return frase_encriptada
 
 while True:
-    print(encriptar(input("Ingrese frase a encriptar: \n"),caracter_elegido))
+    print(encriptar_X(input("Ingrese frase a encriptar: \n")))
     print("\n Ingrese\n(1) para encriptar otra frase")
     print("(2) para finalizar")
     opcion = input(">")
