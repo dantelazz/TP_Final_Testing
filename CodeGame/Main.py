@@ -1,7 +1,7 @@
 from sympy.crypto.crypto import encipher_shift, decipher_shift
 
 
-
+'Este funcion es un mero ejemplo'
 def encriptarX(frase):
     caracter = "X"
     frase_encriptada = ""
