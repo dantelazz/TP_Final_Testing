@@ -1,8 +1,10 @@
+from sympy.crypto.crypto import encipher_shift, decipher_shift
 
 
-def encriptar_X(frase):
-    caracter="X"
-    frase_encriptada =""
+
+def encriptarX(frase):
+    caracter = "X"
+    frase_encriptada = ""
     for letra in frase:
         if letra.lower() in "bcdfghklmnpqrstvwxyz":
             if letra.isupper():
@@ -13,12 +15,22 @@ def encriptar_X(frase):
             frase_encriptada = frase_encriptada + letra
     return frase_encriptada
 
+
+def encriptarCesar(frase):
+    frase_encriptada = encipher_shift(frase, -1)
+    return frase_encriptada
+
+
+def desencriptarCesar(frase):
+    frase = decipher_shift(frase, -1)
+    return frase
+
+
 while True:
-    print(encriptar_X(input("Ingrese frase a encriptar: \n")))
+    print(desencriptarCesar(input("Ingrese frase a encriptar: \n")))
     print("\n Ingrese\n(1) para encriptar otra frase")
     print("(2) para finalizar")
     opcion = input(">")
     if opcion == "2":
         print("Finalizado")
         break
-
