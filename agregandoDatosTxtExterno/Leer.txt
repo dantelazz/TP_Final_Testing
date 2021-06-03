@@ -1,0 +1,2 @@
+Para que podamos agregar al archivo de texto los datos, tiene que estar el .txt en el mismo lugar que el archivo .py
+pd: puto el que lee
