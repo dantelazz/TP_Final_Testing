@@ -58,26 +58,6 @@ inClave[0][1] = ((1 / determinante) * tadj[0][1]) % 26
 inClave[1][0] = ((1 / determinante) * tadj[1][0]) % 26
 inClave[1][1] = ((1 / determinante) * tadj[1][1]) % 26
 
-'''
-print('Determinante ', determinante)
-print('Adjunta ')
-for i in range(2):
-    for j in range(2):
-        print(adjunta[i][j], "\t,", end='')
-    print("\n")
-print('Adjunta Transpuerta')
-
-for i in range(2):
-    for j in range(2):
-        print(tadj[i][j], "\t", end='')
-    print("\n")
-
-print('Matriz inversa a la clave ')
-for i in range(2):
-    for j in range(2):
-        print(inClave[i][j], "\t", end='')
-    print("\n")
-'''
 
 i = 0
 j = 0
@@ -112,5 +92,4 @@ for i in range (int(np.size(m_crip) / 2)):
     c1 = inClave[0][0] * m1 + inClave[1][0] * m2
     c2 = inClave[0][1] * m1 + inClave[1][1] * m2
 
-#print(int(cipher[i][0]), ' - ', int(cipher[i][i]))
 print(abecedario[int(descipher[i][0])], '', abecedario[int(descipher[i][1])], ' ', end='')
