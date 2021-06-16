@@ -30,11 +30,9 @@ def funcionEncriptarFrase():
     fraseString = ""
     for palabra in arrayFrase:
         if nivel == 0:
-            fraseString += EncriptarX.encriptarX(
-                Geringoso.encriptarGeringoso(palabra)) + " "
+            fraseString += EncriptarX.encriptarX(Geringoso.encriptarGeringoso(palabra)) + " "
         elif nivel == 1:
             fraseString += EncriptarX.encriptarX(palabra) + " "
-        elif nivel == 2:
     return fraseString
 
 
@@ -57,6 +55,7 @@ def intentos():
             intentoDeDesencripcion(jugada)
             if frase == frase_encriptada:
                 print("Ganaste !!")
+                juego = False
             else:
                 vida -= 1
         else:
@@ -79,10 +78,11 @@ def desencriptarCesar(frase):
     frase = decipher_shift(frase, -1)
     return frase
 
-
-while True:
+def menu():
     nivel = int(
     input("Ingrese el numero dificultad:\n 0 Facil\n 1 Medio\n 2 Dificil\n"))
     print("La frase a desencriptar es: ")
     print(seleccionoPalabrasPorNivel())
-    intentos()
+
+
+intentos()
