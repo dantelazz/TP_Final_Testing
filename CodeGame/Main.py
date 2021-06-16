@@ -49,13 +49,20 @@ def intentos():
     juego = True
     while juego:
         if vida > 0:
-            print(
-                "Seleccione lenguaje para desencriptar: \n 0.Geringoso\n 1.X\n 2.Cesar \n  ")
+            print("La frase a desencriptar es: {}".format(frase_encriptada))
+            print("Seleccione lenguaje para desencriptar: \n 0.Geringoso\n 1.X\n 2.Cesar \n  ")
             jugada = int(input())
             intentoDeDesencripcion(jugada)
-            if frase == frase_encriptada:
+            if frase == frase_encriptada.strip():
                 print("Ganaste !!")
                 juego = False
+                print("Desea Jugar de nuevo?")
+                opcion = input()
+                if opcion == "si":
+                    menu()
+                    vida = 3
+                else:
+                    break
             else:
                 vida -= 1
         else:
@@ -79,10 +86,11 @@ def desencriptarCesar(frase):
     return frase
 
 def menu():
+    global nivel
     nivel = int(
     input("Ingrese el numero dificultad:\n 0 Facil\n 1 Medio\n 2 Dificil\n"))
-    print("La frase a desencriptar es: ")
-    print(seleccionoPalabrasPorNivel())
-
-
-intentos()
+    seleccionoPalabrasPorNivel()
+    intentos()
+    
+    
+menu()

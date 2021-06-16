@@ -21,5 +21,4 @@ def encriptarGeringoso(frase):
     return palabraNueva
 
 def desencriptarGeringoso(frase):
-    palabraNueva=""
-    print(frase.replace("apa","a"))
+    return frase.replace("apa","a").replace("epe","e").replace("ipi","i").replace("opo","o").replace("upu","u")
