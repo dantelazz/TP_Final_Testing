@@ -7,7 +7,7 @@ def imprimir_matriz(char):
             print(int(char[i][j]), '\t', end = "")
         print('\n')
 
-rta = int(input('Cifrado de Hill. \n \n 1. Cifrar \n 2. Descifrar \n \n Rta: '))
+rta = int(input('\n Cifrado de Hill. \n \n 1. Cifrar \n 2. Descifrar \n \n Rta: '))
 
 if rta == 1:
 
@@ -41,7 +41,7 @@ if rta == 1:
         try:
             if (np.size(m_crip) / 2 == j):
                 break
-            #print(texto[i], ' - ', texto[i + 1])
+            print(texto[i], ' - ', texto[i + 1])
             m_crip[j][0] = diccionario_letras[texto[i]]
             m_crip[j][1] = diccionario_letras[texto[i + 1]]
             i += 2
@@ -98,7 +98,7 @@ else:
     adjunta[0][0] = clave[1][1] 
     adjunta[1][1] = clave[0][0] 
     adjunta[0][1] = -1 * clave[1][0]
-    adjunta[1][1] = -1 * clave[0][1]
+    adjunta[1][0] = -1 * clave[0][1]
 
 
     tadj = np.zeros((2, 2))
@@ -138,12 +138,14 @@ else:
     m1 = 0
     m2 = 0
 
-    descipher = np.zero(m_crip.shape)
+    descipher = np.zeros(m_crip.shape)
     print('Texto Descrifrado: ')
     for i in range (int(np.size(m_crip) / 2)):
         m1 = m_crip[i][0]
         m2 = m_crip[i][1]
         c1 = inClave[0][0] * m1 + inClave[1][0] * m2
         c2 = inClave[0][1] * m1 + inClave[1][1] * m2
+        descipher[i][0] = c1 % 26
+        descipher[i][1] = c2 % 26
 
     print(abecedario[int(descipher[i][0])], '', abecedario[int(descipher[i][1])], ' ', end='')                          
