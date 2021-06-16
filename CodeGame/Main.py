@@ -1,36 +1,97 @@
-from sympy.crypto.crypto import encipher_shift, decipher_shift
+import Geringoso
+import random
+import csv
+import Cesar
+import EncriptarX
+
+nivel = 2
+frase = ""
+frase_encriptada = ""
+vida = 4
 
 
-'Este funcion es un mero ejemplo'
-def encriptarX(frase):
-    caracter = "X"
-    frase_encriptada = ""
-    for letra in frase:
-        if letra.lower() in "bcdfghklmnpqrstvwxyz":
-            if letra.isupper():
-                frase_encriptada = frase_encriptada + caracter.upper()
-            else:
-                frase_encriptada = frase_encriptada + caracter
-        else:
-            frase_encriptada = frase_encriptada + letra
+# Leo el archivo .csv y busco por nivel, luego busco una palabra ramdon y la retorno.
+def seleccionoPalabrasPorNivel():
+    global nivel, frase, frase_encriptada
+    listPalabras = []
+    reader = csv.reader(
+        open("C:/Users/El Poshi/Desktop/TareaTestingConDante/CodeGame/Frases.csv"))
+    for row in reader:
+        listPalabras.append(row)
+    # Obtengo palabra al azar
+    frase = obtenerPalabraAlAzar(listPalabras[nivel])
+    frase_encriptada = funcionEncriptarFrase()
     return frase_encriptada
 
 
-def encriptarCesar(frase):
-    frase = encipher_shift(frase, -1)
-    return frase
+# Recibo una lista de palabras y selecciono una random
+def obtenerPalabraAlAzar(listaDePalabras):
+    palabraSeleccionada = random.choice(listaDePalabras)
+    return palabraSeleccionada
 
 
-def desencriptarCesar(frase):
-    frase = decipher_shift(frase, -1)
-    return frase
+#Toma los lenguajes de encriptacion y los cifra segun el nivel elegido
+def funcionEncriptarFrase():
+    global nivel, frase
+    arrayFrase = frase.split(" ")
+    fraseString = ""
+    for palabra in arrayFrase:
+        if nivel == 0:
+            fraseString += EncriptarX.encriptarX(Geringoso.encriptarGeringoso(palabra)) + " "
+        elif nivel == 1:
+            fraseString += EncriptarX.encriptarX(Cesar.encriptarCesar(palabra)) + " "  
+        elif nivel == 2:
+            fraseString += EncriptarX.encriptarX(Cesar.encriptarCesar(Geringoso.encriptarGeringoso(palabra))) + " " 
+    return fraseString
+
+#Segun la opcion elegida desencripta 
+def intentoDeDesencripcion(opcion):
+    global frase_encriptada
+    fraseString = ""
+    arrayFrase = frase_encriptada.split(" ")
+    
+    if opcion == 0:
+            frase_encriptada = Geringoso.desencriptarGeringoso(frase_encriptada)
+    elif opcion == 1:
+            frase_encriptada = EncriptarX.desencriptarX(frase_encriptada) 
+    elif opcion == 2:
+            frase_encriptada = Cesar.desencriptarCesar(frase_encriptada) 
+    
+
+# Intentos mientras las vidas sean mayor a cero, el juego corre, muestra un menu y se selecciona que lenguaje usar para desencriptar, ademas finaliza el juego
+def intentos():
+    global vida, frase_encriptada, frase
+    juego = True
+    while juego:
+        if vida > 0:
+            print("La frase a desencriptar es: {}".format(frase_encriptada))
+            print("Seleccione lenguaje para desencriptar: \n 0.Geringoso\n 1.X\n 2.Cesar \n  ")
+            jugada = int(input())
+            intentoDeDesencripcion(jugada)
+            if frase == frase_encriptada.strip().lower(): 
+                print("Ganaste !! La frase era: {}".format(frase))
+                juego = False
+                print("Desea Jugar de nuevo?")
+                opcion = input()
+                if opcion == "si":
+                    vida = 4
+                    menu()
+                else:
+                    break
+            else:
+                vida -= 1
+        else:
+            print("Perdiste :( ")
+            juego = False
 
 
-while True:
-    print(encriptarX(input("Ingrese frase a encriptar: \n")))
-    print("\n Ingrese\n(1) para encriptar otra frase")
-    print("(2) para finalizar")
-    opcion = input(">")
-    if opcion == "2":
-        print("Finalizado")
-        break
+
+def menu():
+    global nivel
+    nivel = int(
+    input("Ingrese el numero dificultad:\n 0 Facil\n 1 Medio\n 2 Dificil\n"))
+    seleccionoPalabrasPorNivel()
+    intentos()
+    
+    
+menu()
