@@ -12,9 +12,9 @@ rta = int(input('\n Cifrado de Hill. \n \n 1. Cifrar \n 2. Descifrar \n \n Rta: 
 if rta == 1:
 
     #Se solicitan los datos
-    texto = input('Por favor introduce el texto a cifrar: ')
+    texto = input('\nPor favor introduce el texto a cifrar: ')
     texto = texto.upper().strip().replace(' ', '')
-    print('Por favor introduzca la clave (matriz 2x2)')
+    print('\nPor favor introduzca la clave (matriz 2x2)')
 
     clave = np.empty((4, 4))
     mensaje = ''
@@ -58,7 +58,7 @@ if rta == 1:
     m2 = 0  
 
     cipher = np.zeros(m_crip.shape)
-    print('Texto Cifrado')
+    print('\nTexto Cifrado')
 
     for i in range (int(np.size(m_crip) / 2)):
         m1 = m_crip[i][0]
@@ -71,9 +71,9 @@ if rta == 1:
         print(abecedario[int(cipher[i][0])], '', abecedario[int(cipher[i][1])], ' ', end='')
 
 else:
-    texto = input('Por favor ingresar el texto a descifrar: ')
+    texto = input('\nPor favor ingresar el texto a descifrar: ')
     texto = texto.upper().strip().replace(' ', '')
-    print('Por favor introduzca la clave (matriz 2x2)')
+    print('\nPor favor introduzca la clave (matriz 2x2)')
     clave = np.empty((4, 4))
     mensaje = ''
     m_crip = np.zeros((math.ceil(len(texto) / 2), 2))    
@@ -139,7 +139,7 @@ else:
     m2 = 0
 
     descipher = np.zeros(m_crip.shape)
-    print('Texto Descrifrado: ')
+    print('\nTexto Descrifrado: ')
     for i in range (int(np.size(m_crip) / 2)):
         m1 = m_crip[i][0]
         m2 = m_crip[i][1]

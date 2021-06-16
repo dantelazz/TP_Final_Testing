@@ -1,0 +1,140 @@
+********************
+* Cifrado de Hill: *
+********************
+
+En criptografía clásica, el Cifrado Hill es un cifrado de sustitución poligráfica basado en el álgebra lineal. 
+Inventado por Lester S. Hill en 1929, fue el primer cifrado poligráfico que era práctico para operar sobre más 
+de tres símbolos inmediatamente. El artículo siguiente supone un conocimiento elemental de matrices.
+
+
+
+**************
+* Operación: *
+**************
+
+Cada letra está representada por un número. A menudo el esquema sencillo A = 0, B = 1, ..., Z = 25 es utilizado, 
+pero esto no es una característica esencial del cifrado. Para encriptar un mensaje, cada bloque de n letras 
+(considerados como un vector) está multiplicado por una matriz invertible n×n (modular 26). Para desencriptar el mensaje, cada 
+bloque es multiplicado por el inverso de la matriz usada para la encriptación.
+
+La matriz usada para la encriptación es la llave de cifrado, y tiene que ser escogida aleatoriamente del 
+conjunto de matrices invertibles n×n (modular 26). El cifrado puede naturalmente, ser adaptado a un alfabeto 
+representado con cualquier orden numerico y/o cambiando el número (modular 26) siempre y cuando la matriz n×n (modular x) sea invertible.
+
+
+Considerar el mensaje 'ACT', y la clave de abajo (Matriz en letras es GYBNQKURP):
+
+| 6   24   1|
+|           |
+| 13  16  10|
+|           |
+| 20  17  15|  
+
+
+
+'A' es 0, 'C' es 2 y 'T' es 19, con lo que el mensaje es el vector:
+
+| 0  |
+|    |
+| 2  |
+|    |
+| 19 |
+
+
+
+Por ello el vector cifrado está dado por:
+
+| 6   24  1  |     | 0  |       | 67  |
+|            |     |    |       |     |
+| 13  16  10 |     | 2  |   =   | 222 |
+|            |     |    |       |     |
+| 20  17  15 |     | 19 |       | 319 |
+
+
+
+| (67)  mod (26) |        | 15 |
+|                |        |    |
+| (222) mod (26) |   =    | 14 |
+|                |        |    |
+| (319) mod (26) |        | 7  |
+
+
+
+El cual corresponde al texto 'POH'. Ahora, suponemos que nuestro mensaje es 'CAT', su vector equivalente seria:
+
+|  2   |
+|      |
+|  0   |
+|      |
+|  19  |
+
+
+
+Esta vez, el vector cifrado está dado por:
+
+| 6   24   1   |   |  2   |     | (31)  mod  (26) |     | 5  |
+|              |   |      |     |                 |     |    |
+| 13  16   10  |   |  0   |  =  | (216) mod  (26) |  =  | 8  |
+|              |   |      |     |                 |     |    |
+| 20  17   15  |   |  19  |     | (325) mod  (26) |     | 13 |
+
+
+El cual corresponde al texto 'FIN'. Cada letra ha cambiado, obteniendo un vector completamente distinto.
+El cifrado de Hill ha conseguido la difusión de Shannon.
+
+
+
+
+****************
+* Descrifrado: *
+****************
+
+Para descifrar, transformamos el texto cifrado en un vector, entonces sólo tendrás que multiplicar 
+por la matriz inversa de la matriz clave (IFKVIVVMI en letras). (Hay métodos estándares para calcular la 
+matriz inversa; ver matriz invertible para detalles.). Encontramos que, módulo 26, el inverso de la matriz usada en el ejemplo anterior es:
+
+| 6   24   1   |   }           | 8    5  10 |     
+|              |   }           |            |     
+| 13  16   10  |   } ^-1  =    | 21   8  21 |   (mod 26)
+|              |   }           |            |     
+| 20  17   15  |   }           | 21   12  8 |     
+
+
+
+Tomando el ejemplo anterior de texto cifrado 'POH', tenemos que :
+ 
+| 8   5   10  |    | 15 |     | 260 |    | 0  |     
+|             |    |    |     |     |    |    |     
+| 21  8   21  |    | 14 |  =  | 574 | =  | 2  |  (mod 26)  
+|             |    |    |     |     |    |    |    
+| 21  12   8  |    | 7  |     | 7   |    | 19 |    
+
+
+El cual nos da como resultado 'ACT', tal y como esperábamos.
+
+No hemos hablado todavía sobre las dos complicaciones que existen al elegir la matriz de encriptar. 
+No todas las matrices tienen un inverso (ver matriz invertible). La matriz tendrá un inverso si y sólo si su determinante no es cero. 
+También, en el caso del Cifrado de Hill, el determinante de la matriz de encriptar no tiene que tener ningún factor común con la base modular. 
+Así, si trabajamos módulo 26 como arriba, el determinante tiene que ser no-cero, y no tiene que ser divisible por 2 o 13. Si el determinante
+es 0, o tiene factores comunes con la base modular, entonces la matriz no puede ser utilizada en el Cifrado de Hill y otra matriz tiene 
+que ser escogida. Afortunadamente, las matrices que satisfacen las condiciones para ser utilizadas en el Cifrado de Hill son bastante comunes.
+
+
+Para nuestro ejemplo, la matriz clave:
+
+| 6     24    1  |
+|                |
+|  13   16    10 | = 6 (16.15 - 10.17) - 24 (13.15 - 10.20) + 1(13.17 - 16.20) = 441 = 24 (mod 26)
+|                |
+|  20   17    15 |
+
+Así que, módulo 26, el determinante es 25. Éste tiene no factores comunes con 26, así que esta matriz puede ser utilizada para el Cifrado de Hill.
+
+El riesgo del determinante habiendo factores comunes con el módulo puede ser eliminado convirtiendo el módulo en primo. 
+Consiguientemente una variante útil del Cifrado de Hill añade 3 símbolos extras (como un espacio, un punto y un signo de interrogación) 
+para aumentar el módulo a 29.
+
+
+
+
+(fue hecho a mano con amor, no criticar :c )
