@@ -148,4 +148,4 @@ else:
         descipher[i][0] = c1 % 26
         descipher[i][1] = c2 % 26
 
-    print(abecedario[int(descipher[i][0])], '', abecedario[int(descipher[i][1])], ' ', end='')                          
+        print(abecedario[int(descipher[i][0])], '', abecedario[int(descipher[i][1])], ' ', end='')                          
