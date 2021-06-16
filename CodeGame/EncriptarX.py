@@ -1,17 +1,17 @@
+import random
 letras = []
 
-'Este funcion es un mero ejemplo'
 def encriptarX(frase):
     global letras
-    caracter = "X"
     frase_encriptada = ""
     for letra in frase:
+        caracter = random.randint(1,9) 
         if letra.lower() in "bgkln":
             if letra.isupper():
-                frase_encriptada = frase_encriptada + caracter.upper()
+                frase_encriptada = frase_encriptada + str(caracter)
                 letras.append(letra)
             else:
-                frase_encriptada = frase_encriptada + caracter
+                frase_encriptada = frase_encriptada + str(caracter)
                 letras.append(letra)
         else:
             frase_encriptada = frase_encriptada + letra
@@ -20,13 +20,13 @@ def encriptarX(frase):
 
 def desencriptarX(frase):
     global letras
-    frase_desencriptada =""
     contador = 0
+    nums = ["1","2","3","4","5","6","7","8","9"]
+    frase_desencriptada =""
     for i in frase:
-        if i == "X":
+        if i in nums :
             frase_desencriptada += letras[contador]
             contador += 1
         else:
             frase_desencriptada += i
-            
     return frase_desencriptada
