@@ -15,7 +15,7 @@ def seleccionoPalabrasPorNivel():
     global nivel, frase, frase_encriptada
     listPalabras = []
     reader = csv.reader(
-        open("C:/Users/El Poshi/Desktop/TareaTestingConDante/CodeGame/Frases.csv"))
+        open("Frases.csv"))
     for row in reader:
         listPalabras.append(row)
     # Obtengo palabra al azar
@@ -30,7 +30,7 @@ def obtenerPalabraAlAzar(listaDePalabras):
     return palabraSeleccionada
 
 
-#Toma los lenguajes de encriptacion y los cifra segun el nivel elegido
+# Toma los lenguajes de encriptacion y los cifra segun el nivel elegido
 def funcionEncriptarFrase():
     global nivel, frase
     arrayFrase = frase.split(" ")
@@ -39,26 +39,28 @@ def funcionEncriptarFrase():
         if nivel == 0:
             fraseString += EncriptarX.encriptarX(Geringoso.encriptarGeringoso(palabra)) + " "
         elif nivel == 1:
-            fraseString += EncriptarX.encriptarX(Cesar.encriptarCesar(palabra)) + " "  
+            fraseString += EncriptarX.encriptarX(Cesar.encriptarCesar(palabra)) + " "
         elif nivel == 2:
-            fraseString += EncriptarX.encriptarX(Cesar.encriptarCesar(Geringoso.encriptarGeringoso(palabra))) + " " 
+            fraseString += EncriptarX.encriptarX(Cesar.encriptarCesar(Geringoso.encriptarGeringoso(palabra))) + " "
     return fraseString
 
-#Segun la opcion elegida desencripta 
+
+# Segun la opcion elegida desencripta
 def intentoDeDesencripcion(opcion):
     global frase_encriptada
     fraseString = ""
     arrayFrase = frase_encriptada.split(" ")
-    
-    if opcion == 0:
-            frase_encriptada = Geringoso.desencriptarGeringoso(frase_encriptada)
-    elif opcion == 1:
-            frase_encriptada = EncriptarX.desencriptarX(frase_encriptada) 
-    elif opcion == 2:
-            frase_encriptada = Cesar.desencriptarCesar(frase_encriptada) 
-    
 
-# Intentos mientras las vidas sean mayor a cero, el juego corre, muestra un menu y se selecciona que lenguaje usar para desencriptar, ademas finaliza el juego
+    if opcion == 0:
+        frase_encriptada = Geringoso.desencriptarGeringoso(frase_encriptada)
+    elif opcion == 1:
+        frase_encriptada = EncriptarX.desencriptarX(frase_encriptada)
+    elif opcion == 2:
+        frase_encriptada = Cesar.desencriptarCesar(frase_encriptada)
+
+
+
+    # Intentos mientras las vidas sean mayor a cero, el juego corre, muestra un menu y se selecciona que lenguaje usar para desencriptar, ademas finaliza el juego
 def intentos():
     global vida, frase_encriptada, frase
     juego = True
@@ -68,12 +70,12 @@ def intentos():
             print("Seleccione lenguaje para desencriptar: \n 0.Geringoso\n 1.X\n 2.Cesar \n  ")
             jugada = int(input())
             intentoDeDesencripcion(jugada)
-            if frase == frase_encriptada.strip().lower(): 
+            if frase == frase_encriptada.strip().lower():
                 print("Ganaste !! La frase era: {}".format(frase))
                 juego = False
-                print("Desea Jugar de nuevo?")
+                print("Desea Jugar de nuevo? (s/n")
                 opcion = input()
-                if opcion == "si":
+                if opcion == "s":
                     vida = 4
                     menu()
                 else:
@@ -85,13 +87,12 @@ def intentos():
             juego = False
 
 
-
 def menu():
     global nivel
-    nivel = int(
-    input("Ingrese el numero dificultad:\n 0 Facil\n 1 Medio\n 2 Dificil\n"))
+    print("Bienvenido a code Game")
+    nivel = int(input("Ingrese el numero dificultad:\n 0 Facil\n 1 Medio\n 2 Dificil\n"))
     seleccionoPalabrasPorNivel()
     intentos()
-    
-    
+
+
 menu()
