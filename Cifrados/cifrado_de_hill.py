@@ -8,7 +8,7 @@ def imprimir_matriz(char):
         print('\n')
 
 
-def Main():
+def cifrarHill():
     rta = int(input('\n Cifrado de Hill. \n \n 1. Cifrar \n 2. Descifrar \n \n Rta: '))
 
     if rta == 1:
@@ -72,7 +72,7 @@ def Main():
 
             print(abecedario[int(cipher[i][0])], '', abecedario[int(cipher[i][1])], ' ', end='')
 
-    else:
+def descifrarHill():
         texto = input('\nPor favor ingresar el texto a descifrar: ')
         texto = texto.upper().strip().replace(' ', '')
         print('\nPor favor introduzca la clave (matriz 2x2)')
@@ -151,6 +151,3 @@ def Main():
             descipher[i][1] = c2 % 26
 
             print(abecedario[int(descipher[i][0])], '', abecedario[int(descipher[i][1])], ' ', end='')
-
-runGame = Main()
-runGame
