@@ -1,6 +1,6 @@
 import random
 import csv
-from TareaTestingConDante.CifradoD import Cesar, EncriptarX, Geringoso
+from CifradoD import Cesar,EncriptarX,Geringoso
 
 nivel = 2
 frase = ""
@@ -55,9 +55,9 @@ def intentoDeDesencripcion(opcion):
     elif opcion == 2:
         frase_encriptada = Cesar.desencriptarCesar(frase_encriptada)
 
-
-
     # Intentos mientras las vidas sean mayor a cero, el juego corre, muestra un menu y se selecciona que lenguaje usar para desencriptar, ademas finaliza el juego
+
+
 def intentos():
     global vida, frase_encriptada, frase
     juego = True
