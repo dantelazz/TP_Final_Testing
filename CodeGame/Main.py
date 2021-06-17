@@ -83,13 +83,13 @@ def intentos():
             else:
                 vida -= 1
         else:
-            print("Perdiste :( ")
+            print("Perdiste :( la frase era: {}".format(frase))
             juego = False
 
 
 def menu():
     global nivel
-    print("Bienvenido a code Game")
+    print("Bienvenido a Code Game Romantic Version")
     nivel = int(input("Ingrese el numero dificultad:\n 0 Facil\n 1 Medio\n 2 Dificil\n"))
     seleccionoPalabrasPorNivel()
     intentos()
