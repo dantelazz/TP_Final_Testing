@@ -27,4 +27,14 @@ def test_desencriptarCesar():
     assert m2 == "chay anne"
     m3 = desencriptarCesar("zm3zmz ")
     assert m3 == "an3ana"
-    m4 =
+    m4 = desencriptarCesar("")
+    assert m4 ==""
+    m5 = desencriptarCesar(" ")
+    assert m5 ==""
+    m6 = desencriptarCesar(5)
+    assert m6 == ""
+    m7 = desencriptarCesar(1,5)
+    assert m7 == ""
+    m8 = desencriptarCesar("#")
+    assert m8 =="#"
+
