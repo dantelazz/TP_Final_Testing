@@ -65,7 +65,7 @@ def intentos():
     while juego:
         if vida > 0:
             print("La frase a desencriptar es: {}".format(frase_encriptada))
-            print("Seleccione lenguaje para desencriptar: \n 0.Geringoso\n 1.X\n 2.Cesar \n  ")
+            print("Seleccione lenguaje para desencriptar: \n 0.Geringoso\n 1.Numeros\n 2.Cesar \n  ")
             jugada = int(input())
             intentoDeDesencripcion(jugada)
             if frase == frase_encriptada.strip().lower():
@@ -87,6 +87,7 @@ def intentos():
 
 def menu():
     global nivel
+    print("\n ")
     print("Bienvenido a Code Game Romantic Version 1.0 \nRecomendamos jugarlo con tu vieja al lado")
     nivel = int(input("Ingrese el numero dificultad:\n 0 Facil\n 1 Medio\n 2 Dificil\n"))
     seleccionoPalabrasPorNivel()
