@@ -1,8 +1,6 @@
-import Geringoso
 import random
 import csv
-import Cesar
-import EncriptarX
+from TareaTestingConDante.CifradoD import Cesar, EncriptarX, Geringoso
 
 nivel = 2
 frase = ""
@@ -10,7 +8,7 @@ frase_encriptada = ""
 vida = 4
 
 
-# Leo el archivo .csv y busco por nivel, luego busco una palabra ramdon y la retorno.
+# Lee el archivo .csv y busco por nivel, luego busco una palabra ramdon y la retorno.
 def seleccionoPalabrasPorNivel():
     global nivel, frase, frase_encriptada
     listPalabras = []
