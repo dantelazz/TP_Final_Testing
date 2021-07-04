@@ -38,8 +38,6 @@ def funcionEncriptarFrase(nivel, frase):
 
 # Segun la opcion elegida desencripta
 def intentoDeDesencripcion(opcion,frase_encriptada):
-    frase_encriptada.split(" ")
-
     if opcion == 0:
         frase_encriptada = Geringoso.desencriptarGeringoso(frase_encriptada)
     elif opcion == 1:
