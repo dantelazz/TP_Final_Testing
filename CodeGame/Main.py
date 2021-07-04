@@ -2,15 +2,10 @@ import random
 import csv
 from CifradoD import Cesar, EncriptarX, Geringoso
 
-nivel = 2
-frase = ""
-frase_encriptada = ""
-vida = 4
 
 
 # Lee el archivo .csv y busco por nivel, luego busco una palabra ramdon y la retorno.
-def seleccionoPalabrasPorNivel():
-    global nivel, frase, frase_encriptada
+def seleccionoPalabrasPorNivel(nivel):
     listPalabras = []
     reader = csv.reader(
         open("Frases.csv"))
@@ -18,8 +13,7 @@ def seleccionoPalabrasPorNivel():
         listPalabras.append(row)
     # Obtengo palabra al azar
     frase = obtenerPalabraAlAzar(listPalabras[nivel])
-    frase_encriptada = funcionEncriptarFrase()
-    return frase_encriptada
+    return frase
 
 
 # Recibo una lista de palabras y selecciono una random
@@ -29,8 +23,7 @@ def obtenerPalabraAlAzar(listaDePalabras):
 
 
 # Toma los lenguajes de encriptacion y los cifra segun el nivel elegido
-def funcionEncriptarFrase():
-    global nivel, frase
+def funcionEncriptarFrase(nivel, frase):
     arrayFrase = frase.split(" ")
     fraseString = ""
     for palabra in arrayFrase:
@@ -44,8 +37,7 @@ def funcionEncriptarFrase():
 
 
 # Segun la opcion elegida desencripta
-def intentoDeDesencripcion(opcion):
-    global frase_encriptada
+def intentoDeDesencripcion(opcion,frase_encriptada):
     frase_encriptada.split(" ")
 
     if opcion == 0:
@@ -55,11 +47,12 @@ def intentoDeDesencripcion(opcion):
     elif opcion == 2:
         frase_encriptada = Cesar.desencriptarCesar(frase_encriptada)
 
+    return frase_encriptada
+
     # Intentos mientras las vidas sean mayor a cero, el juego corre, muestra un menu y se selecciona que lenguaje usar para desencriptar, ademas finaliza el juego
 
 
-def intentos():
-    global vida, frase_encriptada, frase
+def intentos(vida, frase_encriptada, frase):
     juego = True
     while juego:
         if vida > 0:
@@ -70,7 +63,7 @@ def intentos():
             try:
                 jugada = int(jugada)
                 if jugada in numeros:
-                    intentoDeDesencripcion(jugada)
+                    frase_encriptada = intentoDeDesencripcion(jugada,frase_encriptada)
                     if frase == frase_encriptada.strip().lower():
                         print("Ganaste !! La frase era: {}".format(frase))
                         juego = False
@@ -85,25 +78,26 @@ def intentos():
                         vida -= 1
                 else:
                     print("Debe ingresar los numeros correspondientes a la opcion (0 , 1 y 2)")
-                    intentos()
+                    intentos(vida, frase_encriptada, frase)
             except :
                     print("La opcion debe ser un numero")
-                    intentos()
+                    intentos(vida, frase_encriptada, frase)
         else:
             print("Perdiste :( la frase era: {}".format(frase))
             juego = False
 
 
 def menu():
-    global nivel
+    vida = 4
     print("\n ")
     nivel = (input("Ingrese el numero dificultad:\n 0 Facil\n 1 Medio\n 2 Dificil\n"))
     try:
         nivel = int(nivel)
         numeros = [0, 1, 2]
         if nivel in numeros:
-            seleccionoPalabrasPorNivel()
-            intentos()
+            frase_seleccionada = seleccionoPalabrasPorNivel(nivel)
+            frase_encriptada = funcionEncriptarFrase(nivel,frase_seleccionada)
+            intentos(vida,frase_encriptada,frase_seleccionada)
         else:
             print("La opcion debe ser 0 1 o 2")
             menu()
