@@ -18,8 +18,7 @@ def seleccionoPalabrasPorNivel(nivel):
 
 # Recibo una lista de palabras y selecciono una random
 def obtenerPalabraAlAzar(listaDePalabras):
-    palabraSeleccionada = random.choice(listaDePalabras)
-    return palabraSeleccionada
+    return random.choice(listaDePalabras)
 
 
 # Toma los lenguajes de encriptacion y los cifra segun el nivel elegido
