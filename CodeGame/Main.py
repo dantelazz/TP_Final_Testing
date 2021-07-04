@@ -65,20 +65,30 @@ def intentos():
         if vida > 0:
             print("La frase a desencriptar es: {} \n".format(frase_encriptada))
             print("Seleccione lenguaje para desencriptar: \n 0.Geringoso\n 1.Numeros\n 2.Cesar \n  ")
-            jugada = int(input())
-            intentoDeDesencripcion(jugada)
-            if frase == frase_encriptada.strip().lower():
-                print("Ganaste !! La frase era: {}".format(frase))
-                juego = False
-                print("Desea Jugar de nuevo? (s/n)")
-                opcion = input()
-                if opcion == "s":
-                    vida = 4
-                    menu()
+            numeros = [0,1,2]
+            jugada = input()
+            try:
+                jugada = int(jugada)
+                if jugada in numeros:
+                    intentoDeDesencripcion(jugada)
+                    if frase == frase_encriptada.strip().lower():
+                        print("Ganaste !! La frase era: {}".format(frase))
+                        juego = False
+                        print("Desea Jugar de nuevo? (s/n)")
+                        opcion = input()
+                        if opcion == "s":
+                            vida = 4
+                            menu()
+                        else:
+                            break
+                    else:
+                        vida -= 1
                 else:
-                    break
-            else:
-                vida -= 1
+                    print("Debe ingresar los numeros correspondientes a la opcion (0 , 1 y 2)")
+                    intentos()
+            except :
+                    print("La opcion debe ser un numero")
+                    intentos()
         else:
             print("Perdiste :( la frase era: {}".format(frase))
             juego = False
@@ -87,10 +97,21 @@ def intentos():
 def menu():
     global nivel
     print("\n ")
-    print("Bienvenido a Code Game Romantic Version 1.0 \nRecomendamos jugarlo con tu vieja al lado\n")
-    nivel = int(input("Ingrese el numero dificultad:\n 0 Facil\n 1 Medio\n 2 Dificil\n"))
-    seleccionoPalabrasPorNivel()
-    intentos()
+    nivel = (input("Ingrese el numero dificultad:\n 0 Facil\n 1 Medio\n 2 Dificil\n"))
+    try:
+        nivel = int(nivel)
+        numeros = [0, 1, 2]
+        if nivel in numeros:
+            seleccionoPalabrasPorNivel()
+            intentos()
+        else:
+            print("La opcion debe ser 0 1 o 2")
+            menu()
+    except:
+        print("La opcion debe ser un numero")
+        menu()
 
 
+print("Bienvenido a Code Game Romantic Version 1.0")
+print(" \nRecomendamos jugarlo con tu vieja al lado\n")
 menu()
