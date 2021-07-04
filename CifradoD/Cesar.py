@@ -1,16 +1,34 @@
-from sympy.crypto.crypto import encipher_shift, decipher_shift
 
+abc = "abcdefghijklmnopqrstuvwxyz"
+clave = -1
 
 def encriptarCesar(frase):
-    frase = encipher_shift(frase, -1)
-    return frase
+
+    array = frase.strip().split(" ")
+    fraseEncriptada =""
+
+    for i in array:
+        encriptado =""
+        for letra in i:
+            suma = abc.find(letra) + clave
+            modulo = int(suma) %len(abc)
+            encriptado += str(abc[modulo])
+        fraseEncriptada += encriptado + " "
+    return fraseEncriptada.strip()
 
 
 def desencriptarCesar(frase):
+
     array = frase.strip().split(" ")
-    fraseDesencriptada = ""
+    fraseEncriptada = ""
+
     for i in array:
-        fraseDesencriptada += decipher_shift( i , -1) + " "
-    return fraseDesencriptada.lower()
+        encriptado = ""
+        for letra in i:
+            suma = abc.find(letra) - clave
+            modulo = int(suma) % len(abc)
+            encriptado += str(abc[modulo])
+        fraseEncriptada += encriptado + " "
+    return fraseEncriptada.strip()
 
 
