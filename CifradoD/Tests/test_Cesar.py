@@ -14,10 +14,12 @@ def test_encriptarCesar():
     assert c5 == " "
     c6 = encriptarCesar(123432)
     assert c6 == ""
-    c7 = encriptarCesar(2,1)
+    c7 = encriptarCesar(2.1)
     assert c7 == ""
     c8 = encriptarCesar("@")
     assert c8 == "@"
+    c9 = encriptarCesar(None)
+    assert c9 == None
 
 
 def test_desencriptarCesar():
@@ -33,8 +35,10 @@ def test_desencriptarCesar():
     assert m5 ==""
     m6 = desencriptarCesar(5)
     assert m6 == ""
-    m7 = desencriptarCesar(1,5)
+    m7 = desencriptarCesar(1.5)
     assert m7 == ""
     m8 = desencriptarCesar("#")
     assert m8 =="#"
+    m9 = desencriptarCesar(None)
+    assert m9 == None
 
