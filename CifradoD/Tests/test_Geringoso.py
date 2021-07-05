@@ -16,8 +16,6 @@ def test_encriptarGeringoso():
     assert h6 == ""
     h7 = encriptarGeringoso("#")
     assert h7 == "#"
-    h8 = encriptarGeringoso(3,4)
-    assert h8 == ""
     h9 = encriptarGeringoso(None)
     assert h9 == None
     h10 = encriptarGeringoso("oa")
@@ -26,6 +24,7 @@ def test_encriptarGeringoso():
     assert h11 == "opoopo"
     h12 = encriptarGeringoso ("ho6la")
     assert h12 == "hopo6lapa"
+
 
 
 def test_desencriptarGeringoso():
@@ -43,8 +42,6 @@ def test_desencriptarGeringoso():
     assert l6 == ""
     l7 = desencriptarGeringoso("#")
     assert l7 == "#"
-    l8 = desencriptarGeringoso(3,4)
-    assert l8 == ""
     l9 = desencriptarGeringoso("bapa8lapa")
     assert l9 == "ba8la"
     l10 = desencriptarGeringoso("apaapa")
