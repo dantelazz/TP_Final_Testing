@@ -26,6 +26,9 @@ def test_encriptarX():
     assert e11 == ""
     e12 = encriptarX(" k ")
     assert e12 == "k"
+    e13 = encriptarX(None)
+    assert e13 == None
+
 
 
 
@@ -50,3 +53,5 @@ def test_desencriptarX():
     assert a10 == ""
     a11 = desencriptarX(1, 5)
     assert a11 == ""
+    a12 = desencriptarX(None)
+    assert a12 == None
