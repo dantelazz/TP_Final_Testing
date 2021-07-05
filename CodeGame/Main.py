@@ -86,7 +86,6 @@ def intentos(vida, frase_encriptada, frase):
 
 def menu():
     vida = 4
-    print("\n ")
     nivel = (input("Ingrese el numero dificultad:\n 0 Facil\n 1 Medio\n 2 Dificil\n"))
     try:
         nivel = int(nivel)
@@ -103,6 +102,5 @@ def menu():
         menu()
 
 
-print("Bienvenido a Code Game Romantic Version 1.0")
-print(" \nRecomendamos jugarlo con tu vieja al lado\n")
+print("Bienvenido a Code Game Romantic Version 1.0 \nRecomendamos jugarlo con tu vieja al lado\n")
 menu()
